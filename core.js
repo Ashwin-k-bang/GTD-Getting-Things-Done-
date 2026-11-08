@@ -59,7 +59,8 @@ G.sync=async quiet=>{const c=G.cfg();if(!c.token||!c.repo){setStatus('Sync is of
    try{if(push)await ghPut(c,r.sha);const t='Synced '+new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
     if(quiet&&JSON.stringify(S)===before){G.status=t;document.querySelectorAll('#status,#sstat').forEach(e=>e.textContent=t)}else setStatus(t);break}
    catch(e){if(e.message!=='conflict'||n)throw e}}}
- catch(e){setStatus('Sync error: '+e.message)}finally{busy=false}};
+ catch(e){const code=(e.message.match(/GitHub (\d+)/)||[])[1],M={401:'token rejected, make a new one',403:'token needs Contents: Read and write on that repo',404:'repo not found, or the token has no access to it',conflict:'could not save; make sure the repo has a README so the main branch exists'};
+  setStatus('Sync error: '+(M[code]||M[e.message]||e.message))}finally{busy=false}};
 /* one-link setup: index.html#setup=... carries the sync details to a new device */
 G.setupLink=()=>{const c=G.cfg(),p={repo:c.repo,branch:c.branch||'',path:c.path||'',token:c.token,weekEnd:c.weekEnd||0};
  return location.origin+location.pathname.replace(/[^/]*$/,'')+'index.html#setup='+encodeURIComponent(b64e(JSON.stringify(p)))};
