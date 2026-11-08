@@ -33,3 +33,4 @@ Notes: the token is kept only in that browser's local storage. Use a private rep
 
 ## Later additions (not in this version)
 Inbox, Weekly Review, recurring tasks, Next action highlight, contexts, search, reminders.
+
