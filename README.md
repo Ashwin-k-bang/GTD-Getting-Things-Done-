@@ -18,12 +18,15 @@ A personal task and reference manager based on *Getting Things Done*. Plain HTML
 
 (You can also try it locally: `python3 -m http.server` in this folder, then open `http://localhost:8000`.)
 
-## Sync between devices (optional)
-1. GitHub → Settings → Developer settings → Fine-grained tokens → create a token limited to your repo with **Contents: Read and write**.
-2. In the app, tap ⚙ and enter `owner/repo`, branch (default `main`), file path (default `data/gtd.json`) and the token, then **Save & sync**. Do the same on each device.
-3. The app syncs on open, when you return to it, and a few seconds after each change. Every record carries an updated timestamp and deletions are stored as markers, so the newest edit wins.
+## Sync between devices (one URL, same data everywhere)
+Use a **separate private repo for the data** (e.g. `gtd-data`). The app repo can stay public for GitHub Pages; your tasks never go in it.
+1. GitHub → Settings → Developer settings → Fine-grained tokens → create a token limited to the data repo with **Contents: Read and write**.
+2. On your first device open the app, tap ⚙, enter `owner/gtd-data`, branch (`main`), file path (`data/gtd.json`) and the token, then **Save & sync**.
+3. Tap **Copy setup link for other devices** and open that link once on every other device. It configures sync automatically and removes itself from the address bar. After that, the normal app URL is all you need.
 
-Notes: the token is kept only in that browser's local storage. Use a private repo, since the data file contains your tasks. Without sync, data stays on the device.
+The app syncs on open, when you return to it, when the connection comes back, about every 45 seconds while open, and a few seconds after each change. Every record carries an updated timestamp and deletions are stored as markers, so the newest edit wins.
+
+Notes: the token lives in each browser's local storage. The setup link contains the token, so keep it private and delete it from chats after use. Without sync, data stays on the device.
 
 ## Behaviour
 - "Today" is the device's local date; views refresh at midnight.
@@ -33,4 +36,3 @@ Notes: the token is kept only in that browser's local storage. Use a private rep
 
 ## Later additions (not in this version)
 Inbox, Weekly Review, recurring tasks, Next action highlight, contexts, search, reminders.
-
