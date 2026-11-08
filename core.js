@@ -53,11 +53,19 @@ G.merge=remote=>{let push=false;K.forEach(k=>{const rm=new Map((remote[k]||[]).m
  S[k].forEach(l=>{const r=rm.get(l.id);if(!r||(l.updated||0)>(r.updated||0)){out.set(l.id,l);push=true}});
  S[k]=[...out.values()]});return push};
 const queue=()=>{const c=G.cfg();if(!c.token||!c.repo)return;clearTimeout(tm);tm=setTimeout(()=>G.sync(),2500)};
-G.sync=async()=>{const c=G.cfg();if(!c.token||!c.repo){setStatus('Sync is off (add GitHub details in ⚙)');return}
- if(busy)return;busy=true;setStatus('Syncing…');
+G.sync=async quiet=>{const c=G.cfg();if(!c.token||!c.repo){setStatus('Sync is off (add GitHub details in ⚙)');return}
+ if(busy)return;busy=true;const before=JSON.stringify(S);if(!quiet)setStatus('Syncing…');
  try{for(let n=0;n<2;n++){const r=await ghGet(c);let push=true;if(r.data)push=G.merge(r.data);seed();persist();
-   try{if(push)await ghPut(c,r.sha);setStatus('Synced '+new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}));break}catch(e){if(e.message!=='conflict'||n)throw e}}}
+   try{if(push)await ghPut(c,r.sha);const t='Synced '+new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
+    if(quiet&&JSON.stringify(S)===before){G.status=t;document.querySelectorAll('#status,#sstat').forEach(e=>e.textContent=t)}else setStatus(t);break}
+   catch(e){if(e.message!=='conflict'||n)throw e}}}
  catch(e){setStatus('Sync error: '+e.message)}finally{busy=false}};
+/* one-link setup: index.html#setup=... carries the sync details to a new device */
+G.setupLink=()=>{const c=G.cfg(),p={repo:c.repo,branch:c.branch||'',path:c.path||'',token:c.token,weekEnd:c.weekEnd||0};
+ return location.origin+location.pathname.replace(/[^/]*$/,'')+'index.html#setup='+encodeURIComponent(b64e(JSON.stringify(p)))};
+const applySetup=()=>{const m=/[#&]setup=([^&]+)/.exec(location.hash);if(!m)return;
+ try{const o=JSON.parse(b64d(decodeURIComponent(m[1])));if(o&&o.repo&&o.token)G.setCfg({repo:o.repo,branch:o.branch||'',path:o.path||'',token:o.token,weekEnd:+o.weekEnd||0})}catch(e){}
+ history.replaceState(null,'',location.pathname+location.search)};
 /* ---------- shared UI ---------- */
 G.catBar=active=>{const o=G.open();return'<a class="pill'+(active==='dash'?' on':'')+'" href="index.html">⌂ Dashboard</a>'+
  G.list('cats').sort((a,b)=>a.created-b.created).map(c=>{const n=o.filter(t=>t.cat===c.id),od=n.filter(t=>t.dl&&G.diff(t.dl)<0).length;
@@ -72,11 +80,12 @@ G.taskRow=(t,o)=>{o=o||{};const c=G.get('cats',t.cat)||{name:'?',color:'#999'},l
 G.newCategory=()=>{let n=prompt('New category name');if(n==null)return;n=n.trim();if(!n)return;
  if(G.list('cats').some(c=>c.name.toLowerCase()===n.toLowerCase())){alert('A category with that name already exists.');return}
  const c=G.put('cats',{name:n,color:COLS[G.list('cats').length%COLS.length]});location.href='category.html?c='+c.id};
-G.init=async()=>{await openDB();await load();seed();
+G.init=async()=>{await openDB();await load();seed();applySetup();
  document.addEventListener('click',e=>{if(e.target.closest('[data-newcat]'))G.newCategory()});
  document.addEventListener('change',e=>{const id=e.target.dataset&&e.target.dataset.done;if(!id)return;const t=G.get('tasks',id);if(t)G.put('tasks',Object.assign({},t,{done:e.target.checked,doneAt:e.target.checked?Date.now():0}))});
  let day=G.today();setInterval(()=>{if(G.today()!==day){day=G.today();emit()}},30000);
- document.addEventListener('visibilitychange',()=>{if(!document.hidden){if(G.today()!==day){day=G.today();emit()}G.sync()}});
+ document.addEventListener('visibilitychange',()=>{if(!document.hidden){if(G.today()!==day){day=G.today();emit()}G.sync(1)}});
+ window.addEventListener('online',()=>G.sync(1));setInterval(()=>{if(!document.hidden)G.sync(1)},45000);
  if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
  G.sync()};
 return G})();
