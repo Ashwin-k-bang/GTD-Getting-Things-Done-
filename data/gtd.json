@@ -1,0 +1,146 @@
+{
+ "version": 1,
+ "cats": [
+  {
+   "name": "Plan A",
+   "color": "#2f6fed",
+   "id": "mw81f2faniy8b",
+   "created": 1794154756870,
+   "updated": 1794154756870
+  },
+  {
+   "name": "College",
+   "color": "#e8590c",
+   "id": "mw81f5nc38hxf",
+   "created": 1794154761048,
+   "updated": 1794154761048
+  },
+  {
+   "name": "SSC",
+   "color": "#2f9e44",
+   "id": "mw81f8gj6hoct",
+   "created": 1794154764691,
+   "updated": 1794154764691
+  },
+  {
+   "name": "House",
+   "color": "#ae3ec9",
+   "id": "mw81fcld7eabi",
+   "created": 1794154770049,
+   "updated": 1794154770049
+  },
+  {
+   "name": "Other",
+   "color": "#0c8599",
+   "id": "mw81fgetwo761",
+   "created": 1794154774998,
+   "updated": 1794154774998
+  }
+ ],
+ "tasks": [
+  {
+   "cat": "mw81f2faniy8b",
+   "done": false,
+   "doneAt": 0,
+   "name": "Finish Ethics Youtube Series Note + Mains Notes from Docs",
+   "dl": "",
+   "min": 0,
+   "notes": "",
+   "id": "mw81ix5q3gnhj",
+   "created": 1794154936670,
+   "updated": 1794154956722,
+   "deleted": true
+  },
+  {
+   "cat": "mw81f2faniy8b",
+   "done": false,
+   "doneAt": 0,
+   "name": "Finish Ethics Notes (youtube + Docs Claude in docs)",
+   "dl": "2026-12-31",
+   "min": 0,
+   "notes": "",
+   "id": "mw81k2wy0p8r6",
+   "created": 1794154990787,
+   "updated": 1794154990787
+  },
+  {
+   "cat": "mw81f5nc38hxf",
+   "done": false,
+   "doneAt": 0,
+   "name": "ML Exam",
+   "dl": "2026-11-11",
+   "min": 0,
+   "notes": "",
+   "id": "mw81md55ey780",
+   "created": 1794155097354,
+   "updated": 1794155097354
+  },
+  {
+   "cat": "mw81f8gj6hoct",
+   "done": false,
+   "doneAt": 0,
+   "name": "100 Questions a day",
+   "dl": "",
+   "min": 0,
+   "notes": "",
+   "id": "mw81mtljhi0xx",
+   "created": 1794155118679,
+   "updated": 1794155118679
+  },
+  {
+   "cat": "mw81fgetwo761",
+   "done": false,
+   "doneAt": 0,
+   "name": "Give Cheetak to Servicing",
+   "dl": "2026-11-09",
+   "min": 0,
+   "notes": "",
+   "id": "mw81nib56qr4o",
+   "created": 1794155150705,
+   "updated": 1794155150705
+  }
+ ],
+ "rems": [],
+ "tabs": [
+  {
+   "id": "def-today",
+   "name": "Due Today",
+   "rule": "exact",
+   "a": 0,
+   "b": 0,
+   "order": 0,
+   "updated": 0,
+   "created": 0
+  },
+  {
+   "id": "def-tomorrow",
+   "name": "Due Tomorrow",
+   "rule": "exact",
+   "a": 1,
+   "b": 0,
+   "order": 1,
+   "updated": 0,
+   "created": 0
+  },
+  {
+   "id": "def-3days",
+   "name": "Due in 3 Days",
+   "rule": "exact",
+   "a": 3,
+   "b": 0,
+   "order": 2,
+   "updated": 0,
+   "created": 0
+  },
+  {
+   "id": "def-week",
+   "name": "Due This Week",
+   "rule": "week",
+   "a": 0,
+   "b": 0,
+   "order": 3,
+   "updated": 0,
+   "created": 0
+  }
+ ]
+}
