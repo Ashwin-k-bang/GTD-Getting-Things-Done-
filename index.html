@@ -25,6 +25,8 @@
 <label class="f">Data file path<input id="sp" placeholder="data/gtd.json" autocapitalize="off"></label>
 <label class="f">Access token<input id="st" type="password" autocomplete="off"></label>
 <div class="mut" id="sstat" style="margin-top:8px"></div>
+<div class="row"><button class="btn g" id="scopy">Copy setup link for other devices</button></div>
+<div class="mut">Open that link once on each phone or computer and it connects automatically. Treat it like a password.</div>
 <div class="row"><button class="btn" id="ssave">Save &amp; sync</button><button class="btn g" id="sclose">Close</button></div></dialog>
 <script src="core.js"></script>
 <script>
@@ -56,6 +58,8 @@ $('tsave').onclick=()=>{const n=$('tn').value.trim();if(!n){$('tn').focus();retu
  const base=editing?Object.assign({},G.get('tabs',editing)):{order:tabs().length};
  const o=G.put('tabs',Object.assign(base,{name:n,rule:$('tr').value,a:+$('ta').value||0,b:+$('tb').value||0}));cur=o.id;$('tabdlg').close()};
 function openSet(){const c=G.cfg();$('sw').value=String(c.weekEnd||0);$('sr').value=c.repo||'';$('sb').value=c.branch||'';$('sp').value=c.path||'';$('st').value=c.token||'';$('setdlg').showModal()}
+$('scopy').onclick=()=>{const c=G.cfg();if(!c.token||!c.repo){alert('Save your GitHub details first.');return}const u=G.setupLink();
+ (navigator.clipboard?navigator.clipboard.writeText(u):Promise.reject()).then(()=>alert('Setup link copied. Open it once on each device.')).catch(()=>prompt('Copy this setup link:',u))};
 $('sclose').onclick=()=>$('setdlg').close();
 $('ssave').onclick=()=>{G.setCfg({weekEnd:+$('sw').value,repo:$('sr').value.trim(),branch:$('sb').value.trim(),path:$('sp').value.trim(),token:$('st').value.trim()});render();G.sync()};
 document.addEventListener('click',e=>{const el=e.target.closest('[data-act]');if(!el)return;const a=el.dataset.act,id=el.dataset.id;
