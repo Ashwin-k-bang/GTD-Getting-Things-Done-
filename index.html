@@ -5,6 +5,7 @@
 <div class="bar" id="tabs"></div>
 <div id="manage"></div>
 <div id="list"></div>
+<div id="upcoming"></div>
 <div id="hint"></div>
 <div class="foot mut" id="status"></div>
 </main>
@@ -41,6 +42,8 @@ function render(){
  const b=T.find(x=>x.id===cur);
  if(b){const ts=open.filter(t=>G.match(t,b)).sort(G.byDue),tot=ts.reduce((a,t)=>a+(t.min||0),0);
   $('list').innerHTML='<div class="card"><div class="mut" style="margin-bottom:4px">'+ts.length+' task'+(ts.length===1?'':'s')+(tot?' · '+G.fmt(tot):'')+'</div>'+(ts.map(t=>G.taskRow(t,{cat:1})).join('')||'<div class="mut">Nothing here ✓</div>')+'</div>'}else $('list').innerHTML='';
+ const up=open.filter(t=>t.dl&&G.diff(t.dl)>=0).sort(G.byDue);
+ $('upcoming').innerHTML='<div class="card"><h3>Upcoming · '+up.length+' task'+(up.length===1?'':'s')+'</h3>'+(up.map(t=>G.taskRow(t,{cat:1})).join('')||'<div class="mut">No upcoming deadlines ✓</div>')+'</div>';
  $('hint').innerHTML=G.list('cats').length?'':'<div class="card mut">Create your first category with “+ New category” above to get started.</div>';
  $('status').textContent=G.status;$('sstat').textContent=G.status;
 }
