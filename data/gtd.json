@@ -137,15 +137,15 @@
   },
   {
    "cat": "mw81f8gj6hoct",
-   "done": false,
-   "doneAt": 0,
+   "done": true,
+   "doneAt": 1794233714031,
    "name": "Discount 40Q",
    "dl": "2026-11-09",
    "min": 0,
    "notes": "",
    "id": "mw8mwr0op2n7s",
    "created": 1794190853832,
-   "updated": 1794190853832
+   "updated": 1794233714033
   },
   {
    "cat": "mw81f8gj6hoct",
