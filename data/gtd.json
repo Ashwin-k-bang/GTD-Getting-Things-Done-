@@ -196,7 +196,16 @@
    "updated": 1794192780066
   }
  ],
- "rems": [],
+ "rems": [
+  {
+   "cat": "mw81fcld7eabi",
+   "text": "Buy pea protein for mummy",
+   "order": 1,
+   "id": "mw8orn0vkex1w",
+   "created": 1794193974607,
+   "updated": 1794193974607
+  }
+ ],
  "tabs": [
   {
    "id": "def-today",
