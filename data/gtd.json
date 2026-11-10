@@ -242,6 +242,18 @@
    "id": "mwakxc5dp7s6w",
    "created": 1794308454337,
    "updated": 1794308498365
+  },
+  {
+   "cat": "mw81fgetwo761",
+   "done": false,
+   "doneAt": 0,
+   "name": "Buy oil",
+   "dl": "2026-11-10",
+   "min": 0,
+   "notes": "",
+   "id": "mwalqn600v3td",
+   "created": 1794309821640,
+   "updated": 1794309821640
   }
  ],
  "rems": [
