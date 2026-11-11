@@ -245,27 +245,27 @@
   },
   {
    "cat": "mw81fgetwo761",
-   "done": false,
-   "doneAt": 0,
+   "done": true,
+   "doneAt": 1794401031771,
    "name": "Buy oil",
    "dl": "2026-11-10",
    "min": 0,
    "notes": "",
    "id": "mwalqn600v3td",
    "created": 1794309821640,
-   "updated": 1794309821640
+   "updated": 1794401031771
   },
   {
    "cat": "mw81fgetwo761",
-   "done": false,
-   "doneAt": 0,
+   "done": true,
+   "doneAt": 1794401030756,
    "name": "Wash face and moisturize",
    "dl": "2026-11-10",
    "min": 0,
    "notes": "",
    "id": "mwant9c4lgp69",
    "created": 1794313302916,
-   "updated": 1794313320564
+   "updated": 1794401030758
   }
  ],
  "rems": [
