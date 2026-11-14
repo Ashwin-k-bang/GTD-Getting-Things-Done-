@@ -71,7 +71,7 @@ const applySetup=()=>{const m=/[#&]setup=([^&]+)/.exec(location.hash);if(!m)retu
 /* ---------- shared UI ---------- */
 G.catBar=active=>{const o=G.open();return'<a class="pill'+(active==='dash'?' on':'')+'" href="index.html">⌂ Dashboard</a>'+
  G.list('cats').sort((a,b)=>a.created-b.created).map(c=>{const n=o.filter(t=>t.cat===c.id),od=n.filter(t=>t.dl&&G.diff(t.dl)<0).length;
- return'<a class="pill'+(active===c.id?' on':'')+'" href="category.html?c='+c.id+'"><span class="dot" style="background:'+c.color+'"></span>'+G.esc(c.name)+'<span class="badge">'+n.length+'</span>'+(od?'<span class="red" title="Overdue"> ●</span>':'')+'</a>'}).join('')+
+ return'<a class="pill cat'+(active===c.id?' on':'')+'" style="background:'+c.color+';border-color:'+c.color+'" href="category.html?c='+c.id+'">'+G.esc(c.name)+'<span class="badge">'+n.length+'</span>'+(od?'<span class="red" title="Overdue"> ●</span>':'')+'</a>'}).join('')+
  '<button class="pill" data-newcat>+ New category</button>'};
 G.taskRow=(t,o)=>{o=o||{};const c=G.get('cats',t.cat)||{name:'?',color:'#999'},late=t.dl&&!t.done&&G.diff(t.dl)<0;
  return'<div class="task'+(t.done?' done':'')+'"><input type="checkbox" data-done="'+t.id+'"'+(t.done?' checked':'')+' aria-label="Done"><div class="b">'+
@@ -79,6 +79,11 @@ G.taskRow=(t,o)=>{o=o||{};const c=G.get('cats',t.cat)||{name:'?',color:'#999'},l
  '<div class="mut">'+(o.cat?'<span class="dot" style="background:'+c.color+'"></span>'+G.esc(c.name)+' · ':'')+'<span class="'+(late?'red':'')+'">'+G.esc(G.dueLabel(t.dl))+'</span>'+(t.min?' · '+G.fmt(t.min):'')+'</div>'+
  (t.notes?'<div class="mut">'+G.esc(t.notes)+'</div>':'')+'</div>'+
  (o.actions?'<button class="s" data-edit="'+t.id+'" aria-label="Edit">✎</button><button class="s" data-del="'+t.id+'" aria-label="Delete">✕</button>':'')+'</div>'};
+G.dueShort=d=>{if(!d)return'No deadline';const n=G.diff(d);if(n===0)return'Today';if(n===1)return'Tomorrow';
+ const ds=new Date(d+'T00:00').toLocaleDateString([],{day:'numeric',month:'short'});return n>1?ds+' · '+n+'d':ds+' · '+(-n)+'d late'};
+G.compactRow=t=>{const c=G.get('cats',t.cat)||{name:'?',color:'#999'},late=t.dl&&G.diff(t.dl)<0;
+ return'<div class="crow" style="background:'+c.color+'" title="'+G.esc(c.name)+'"><input type="checkbox" data-done="'+t.id+'" aria-label="Done"><a class="cn" href="category.html?c='+t.cat+'">'+G.esc(t.name)+'</a>'+
+ '<span class="cd'+(late?' late':'')+'">'+G.esc(G.dueShort(t.dl))+(t.min?' · '+G.fmt(t.min):'')+'</span></div>'};
 G.newCategory=()=>{let n=prompt('New category name');if(n==null)return;n=n.trim();if(!n)return;
  if(G.list('cats').some(c=>c.name.toLowerCase()===n.toLowerCase())){alert('A category with that name already exists.');return}
  const c=G.put('cats',{name:n,color:COLS[G.list('cats').length%COLS.length]});location.href='category.html?c='+c.id};
