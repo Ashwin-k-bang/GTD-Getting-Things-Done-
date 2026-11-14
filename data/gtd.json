@@ -337,15 +337,15 @@
   },
   {
    "cat": "mw81fgetwo761",
-   "done": false,
-   "doneAt": 0,
+   "done": true,
+   "doneAt": 1794661287831,
    "name": "Get Chetak back",
    "dl": "2026-11-14",
    "min": 0,
    "notes": "",
    "id": "mwfswzm4ml346",
    "created": 1794624205900,
-   "updated": 1794624344055
+   "updated": 1794661287831
   },
   {
    "cat": "mw81f5nc38hxf",
@@ -433,15 +433,15 @@
   },
   {
    "cat": "mw81fgetwo761",
-   "done": false,
-   "doneAt": 0,
+   "done": true,
+   "doneAt": 1794661285076,
    "name": "Find nice eat place for aaro",
    "dl": "2026-11-14",
    "min": 0,
    "notes": "",
    "id": "mwfycmhgqri4d",
    "created": 1794633333460,
-   "updated": 1794633333460
+   "updated": 1794661285076
   },
   {
    "cat": "mw81fgetwo761",
