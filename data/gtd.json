@@ -65,15 +65,15 @@
   },
   {
    "cat": "mw81f5nc38hxf",
-   "done": false,
-   "doneAt": 0,
+   "done": true,
+   "doneAt": 1794624119779,
    "name": "ML Exam",
    "dl": "2026-11-11",
    "min": 0,
    "notes": "",
    "id": "mw81md55ey780",
    "created": 1794155097354,
-   "updated": 1794401091945
+   "updated": 1794624119779
   },
   {
    "cat": "mw81f8gj6hoct",
@@ -294,15 +294,15 @@
   },
   {
    "cat": "mw81f5nc38hxf",
-   "done": false,
-   "doneAt": 0,
+   "done": true,
+   "doneAt": 1794624119926,
    "name": "Send GenAI project on whatsapp",
    "dl": "2026-11-12",
    "min": 0,
    "notes": "",
    "id": "mwc4ckke2vjro",
    "created": 1794401543966,
-   "updated": 1794401543966
+   "updated": 1794624119926
   },
   {
    "cat": "mw81fgetwo761",
