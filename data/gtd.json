@@ -294,15 +294,15 @@
   },
   {
    "cat": "mw81f5nc38hxf",
-   "done": true,
-   "doneAt": 1794624119926,
+   "done": false,
+   "doneAt": 0,
    "name": "Send GenAI project on whatsapp",
    "dl": "2026-11-12",
    "min": 0,
    "notes": "",
    "id": "mwc4ckke2vjro",
    "created": 1794401543966,
-   "updated": 1794624119926
+   "updated": 1794624130431
   },
   {
    "cat": "mw81fgetwo761",
