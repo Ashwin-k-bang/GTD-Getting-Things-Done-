@@ -1,0 +1,384 @@
+{
+ "version": 1,
+ "cats": [
+  {
+   "name": "Plan A",
+   "color": "#2f6fed",
+   "id": "mw81f2faniy8b",
+   "created": 1794154756870,
+   "updated": 1794154756870
+  },
+  {
+   "name": "College",
+   "color": "#e8590c",
+   "id": "mw81f5nc38hxf",
+   "created": 1794154761048,
+   "updated": 1794154761048
+  },
+  {
+   "name": "SSC",
+   "color": "#2f9e44",
+   "id": "mw81f8gj6hoct",
+   "created": 1794154764691,
+   "updated": 1794154764691
+  },
+  {
+   "name": "House",
+   "color": "#ae3ec9",
+   "id": "mw81fcld7eabi",
+   "created": 1794154770049,
+   "updated": 1794154770049
+  },
+  {
+   "name": "Other",
+   "color": "#0c8599",
+   "id": "mw81fgetwo761",
+   "created": 1794154774998,
+   "updated": 1794154774998
+  }
+ ],
+ "tasks": [
+  {
+   "cat": "mw81f2faniy8b",
+   "done": false,
+   "doneAt": 0,
+   "name": "Finish Ethics Youtube Series Note + Mains Notes from Docs",
+   "dl": "",
+   "min": 0,
+   "notes": "",
+   "id": "mw81ix5q3gnhj",
+   "created": 1794154936670,
+   "updated": 1794154956722,
+   "deleted": true
+  },
+  {
+   "cat": "mw81f2faniy8b",
+   "done": false,
+   "doneAt": 0,
+   "name": "Finish Ethics Notes (youtube + Docs Claude in docs)",
+   "dl": "2026-12-31",
+   "min": 0,
+   "notes": "",
+   "id": "mw81k2wy0p8r6",
+   "created": 1794154990787,
+   "updated": 1794401086040
+  },
+  {
+   "cat": "mw81f5nc38hxf",
+   "done": false,
+   "doneAt": 0,
+   "name": "ML Exam",
+   "dl": "2026-11-11",
+   "min": 0,
+   "notes": "",
+   "id": "mw81md55ey780",
+   "created": 1794155097354,
+   "updated": 1794401091945
+  },
+  {
+   "cat": "mw81f8gj6hoct",
+   "done": false,
+   "doneAt": 0,
+   "name": "100 Questions a day",
+   "dl": "",
+   "min": 0,
+   "notes": "",
+   "id": "mw81mtljhi0xx",
+   "created": 1794155118679,
+   "updated": 1794155118679
+  },
+  {
+   "cat": "mw81fgetwo761",
+   "done": true,
+   "doneAt": 1794622447429,
+   "name": "Give Cheetak to Servicing",
+   "dl": "2026-11-13",
+   "min": 0,
+   "notes": "",
+   "id": "mw81nib56qr4o",
+   "created": 1794155150705,
+   "updated": 1794622447429
+  },
+  {
+   "cat": "mw81fgetwo761",
+   "done": true,
+   "doneAt": 1794292299414,
+   "name": "UPS silent",
+   "dl": "2026-11-09",
+   "min": 0,
+   "notes": "",
+   "id": "mw8k6v9t7hxdr",
+   "created": 1794186287057,
+   "updated": 1794292299415
+  },
+  {
+   "cat": "mw81fgetwo761",
+   "done": true,
+   "doneAt": 1794228267333,
+   "name": "Wash shemda napkin",
+   "dl": "2026-11-09",
+   "min": 0,
+   "notes": "",
+   "id": "mw8m5fafvv37w",
+   "created": 1794189578919,
+   "updated": 1794228267334
+  },
+  {
+   "cat": "mw81f8gj6hoct",
+   "done": true,
+   "doneAt": 1794239243439,
+   "name": "Ratio proportion 20q",
+   "dl": "2026-11-09",
+   "min": 0,
+   "notes": "",
+   "id": "mw8mwgzutvzjq",
+   "created": 1794190840842,
+   "updated": 1794239243439
+  },
+  {
+   "cat": "mw81f8gj6hoct",
+   "done": true,
+   "doneAt": 1794233714031,
+   "name": "Discount 40Q",
+   "dl": "2026-11-09",
+   "min": 0,
+   "notes": "",
+   "id": "mw8mwr0op2n7s",
+   "created": 1794190853832,
+   "updated": 1794233714033
+  },
+  {
+   "cat": "mw81f8gj6hoct",
+   "done": false,
+   "doneAt": 0,
+   "name": "SI 20 q",
+   "dl": "2026-11-09",
+   "min": 0,
+   "notes": "",
+   "id": "mw8my4s51gr3g",
+   "created": 1794190918325,
+   "updated": 1794401071038,
+   "deleted": true
+  },
+  {
+   "cat": "mw81f8gj6hoct",
+   "done": true,
+   "doneAt": 1794401038004,
+   "name": "CI 20 Q",
+   "dl": "2026-11-09",
+   "min": 0,
+   "notes": "",
+   "id": "mw8myb6rhy1d0",
+   "created": 1794190926627,
+   "updated": 1794401038004
+  },
+  {
+   "cat": "mw81f8gj6hoct",
+   "done": true,
+   "doneAt": 1794401035198,
+   "name": "Study Time and work from Aditya Ranjan Sir",
+   "dl": "2026-11-09",
+   "min": 0,
+   "notes": "",
+   "id": "mw8mz5m0r8r8v",
+   "created": 1794190966056,
+   "updated": 1794401035198
+  },
+  {
+   "cat": "mw81fgetwo761",
+   "done": false,
+   "doneAt": 0,
+   "name": "Protein source sortout",
+   "dl": "",
+   "min": 0,
+   "notes": "",
+   "id": "mw8o21b60ezch",
+   "created": 1794192780066,
+   "updated": 1794192780066
+  },
+  {
+   "cat": "mw81fgetwo761",
+   "done": false,
+   "doneAt": 0,
+   "name": "Buy travel.mug for 1. chia seeds 2. For mummy 3. Water spray to clean",
+   "dl": "",
+   "min": 0,
+   "notes": "",
+   "id": "mw8vsnr862gos",
+   "created": 1794205779524,
+   "updated": 1794205779524
+  },
+  {
+   "cat": "mw81fgetwo761",
+   "done": false,
+   "doneAt": 0,
+   "name": "Buy zeelab sunscreen from dad phone",
+   "dl": "",
+   "min": 0,
+   "notes": "",
+   "id": "mw9ddneqr3gob",
+   "created": 1794235312322,
+   "updated": 1794235312322
+  },
+  {
+   "cat": "mw81fgetwo761",
+   "done": false,
+   "doneAt": 0,
+   "name": "Guru and sarasvati song",
+   "dl": "",
+   "min": 0,
+   "notes": "",
+   "id": "mwa8gzepx8648",
+   "created": 1794287535937,
+   "updated": 1794287535937
+  },
+  {
+   "cat": "mw81fgetwo761",
+   "done": true,
+   "doneAt": 1794313286188,
+   "name": "Clean room",
+   "dl": "2026-11-10",
+   "min": 0,
+   "notes": "",
+   "id": "mwakxc5dp7s6w",
+   "created": 1794308454337,
+   "updated": 1794313286189
+  },
+  {
+   "cat": "mw81fgetwo761",
+   "done": true,
+   "doneAt": 1794401031771,
+   "name": "Buy oil",
+   "dl": "2026-11-10",
+   "min": 0,
+   "notes": "",
+   "id": "mwalqn600v3td",
+   "created": 1794309821640,
+   "updated": 1794401031771
+  },
+  {
+   "cat": "mw81fgetwo761",
+   "done": true,
+   "doneAt": 1794401030756,
+   "name": "Wash face and moisturize",
+   "dl": "2026-11-10",
+   "min": 0,
+   "notes": "",
+   "id": "mwant9c4lgp69",
+   "created": 1794313302916,
+   "updated": 1794401030758
+  },
+  {
+   "cat": "mw81fgetwo761",
+   "done": false,
+   "doneAt": 0,
+   "name": "Wash fase and moisturize",
+   "dl": "2026-11-11",
+   "min": 0,
+   "notes": "",
+   "id": "mwc439ikr0m7y",
+   "created": 1794401109740,
+   "updated": 1794401118458
+  },
+  {
+   "cat": "mw81fgetwo761",
+   "done": false,
+   "doneAt": 0,
+   "name": "GTD app setup",
+   "dl": "2026-11-11",
+   "min": 0,
+   "notes": "",
+   "id": "mwc43wcazgiwx",
+   "created": 1794401139323,
+   "updated": 1794401139323
+  },
+  {
+   "cat": "mw81f5nc38hxf",
+   "done": false,
+   "doneAt": 0,
+   "name": "Send GenAI project on whatsapp",
+   "dl": "2026-11-12",
+   "min": 0,
+   "notes": "",
+   "id": "mwc4ckke2vjro",
+   "created": 1794401543966,
+   "updated": 1794401543966
+  },
+  {
+   "cat": "mw81fgetwo761",
+   "done": false,
+   "doneAt": 0,
+   "name": "Meditation",
+   "dl": "2026-11-11",
+   "min": 0,
+   "notes": "",
+   "id": "mwc4ewz2zhrle",
+   "created": 1794401653358,
+   "updated": 1794401653358
+  },
+  {
+   "cat": "mw81fgetwo761",
+   "done": false,
+   "doneAt": 0,
+   "name": "Pullups",
+   "dl": "2026-11-11",
+   "min": 0,
+   "notes": "",
+   "id": "mwc4f3zziw5xc",
+   "created": 1794401662463,
+   "updated": 1794401662463
+  }
+ ],
+ "rems": [
+  {
+   "cat": "mw81fcld7eabi",
+   "text": "Buy pea protein for mummy",
+   "order": 1,
+   "id": "mw8orn0vkex1w",
+   "created": 1794193974607,
+   "updated": 1794193974607
+  }
+ ],
+ "tabs": [
+  {
+   "id": "def-today",
+   "name": "Due Today",
+   "rule": "exact",
+   "a": 0,
+   "b": 0,
+   "order": 0,
+   "updated": 0,
+   "created": 0
+  },
+  {
+   "id": "def-tomorrow",
+   "name": "Due Tomorrow",
+   "rule": "exact",
+   "a": 1,
+   "b": 0,
+   "order": 1,
+   "updated": 0,
+   "created": 0
+  },
+  {
+   "id": "def-3days",
+   "name": "Due in 3 Days",
+   "rule": "exact",
+   "a": 3,
+   "b": 0,
+   "order": 2,
+   "updated": 0,
+   "created": 0
+  },
+  {
+   "id": "def-week",
+   "name": "Due This Week",
+   "rule": "week",
+   "a": 0,
+   "b": 0,
+   "order": 3,
+   "updated": 0,
+   "created": 0
+  }
+ ]
+}

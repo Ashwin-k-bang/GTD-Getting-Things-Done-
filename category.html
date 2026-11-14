@@ -11,6 +11,7 @@
 <div class="row"><input id="fo" placeholder="Notes (optional)"></div>
 <div class="row"><button class="btn" id="fsave">Add task</button><button class="btn g" id="fcancel" hidden>Cancel</button></div></div>
 <div class="card" id="tlist"></div>
+<div class="card" id="failed" hidden></div>
 <div class="card" id="done" hidden></div>
 <h2>Remember</h2>
 <div class="card"><ol id="rlist"></ol><div class="row"><input id="rn" placeholder="Something to keep in mind…" style="flex:2 1 200px"><button class="btn" id="radd">Add</button></div></div>
@@ -28,13 +29,14 @@ function render(){
  const c=G.get('cats',cid);$('missing').hidden=!!c;$('main').hidden=!c;if(!c)return;
  document.title=c.name+' · GTD';
  $('head').innerHTML='<span class="dot" style="background:'+c.color+'"></span>'+G.esc(c.name);
- const all=G.list('tasks').filter(t=>t.cat===cid),o=all.filter(t=>!t.done).sort(G.byDue),dn=all.filter(t=>t.done).sort((a,b)=>(b.doneAt||0)-(a.doneAt||0));
+ const all=G.list('tasks').filter(t=>t.cat===cid),o=all.filter(t=>!t.done&&!t.failed).sort(G.byDue),fl=all.filter(t=>t.failed&&!t.done).sort((a,b)=>(b.failedAt||0)-(a.failedAt||0)),dn=all.filter(t=>t.done).sort((a,b)=>(b.doneAt||0)-(a.doneAt||0));
  const od=o.filter(t=>t.dl&&G.diff(t.dl)<0).length,tot=o.reduce((a,t)=>a+(t.min||0),0);
  $('summary').textContent=o.length+' open · '+od+' overdue · '+(G.fmt(tot)||'0m')+' still needed';
  const dated=o.filter(t=>t.dl),nod=o.filter(t=>!t.dl);
- $('tlist').innerHTML=(dated.map(t=>G.taskRow(t,{actions:1})).join('')+(nod.length?'<div class="mut grp">No deadline</div>'+nod.map(t=>G.taskRow(t,{actions:1})).join(''):''))||'<div class="mut">No open tasks.</div>';
+ $('tlist').innerHTML=(dated.map(t=>G.compactRow(t,{actions:1})).join('')+(nod.length?'<div class="mut grp">No deadline</div>'+nod.map(t=>G.compactRow(t,{actions:1})).join(''):''))||'<div class="mut">No open tasks.</div>';
+ $('failed').hidden=!fl.length;$('failed').innerHTML=fl.length?'<h3 class="red">Failed · '+fl.length+'</h3>'+fl.map(G.failRow).join(''):'';
  $('done').hidden=!dn.length;
- $('done').innerHTML=dn.length?'<div class="hd"><button class="s" id="tgl">'+(showDone?'▾':'▸')+' Completed ('+dn.length+')</button><button class="s" id="clr">Clear all</button></div>'+(showDone?dn.map(t=>G.taskRow(t,{actions:1})).join(''):''):'';
+ $('done').innerHTML=dn.length?'<div class="hd"><button class="s" id="tgl">'+(showDone?'▾':'▸')+' Completed ('+dn.length+')</button><button class="s" id="clr">Clear all</button></div>'+(showDone?dn.map(t=>G.compactRow(t,{actions:1})).join(''):''):'';
  $('rlist').innerHTML=rems().map((r,i)=>'<li>'+(editR===r.id?'<input id="re" value="'+G.esc(r.text)+'" style="width:80%"> <button class="s" data-rs="'+r.id+'">Save</button>':G.esc(r.text)+' <button class="s" data-re="'+r.id+'">✎</button><button class="s" data-ru="'+r.id+'">↑</button><button class="s" data-rd="'+r.id+'">✕</button>')+'</li>').join('')||'<div class="mut">Nothing yet.</div>';
  if(editR&&$('re'))$('re').focus();
 }

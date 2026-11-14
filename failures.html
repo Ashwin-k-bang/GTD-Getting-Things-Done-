@@ -1,0 +1,21 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#2f6fed"><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="icon-192.png"><link rel="stylesheet" href="style.css"><title>Failed · GTD</title></head><body>
+<div class="stick"><div class="wrap"><div class="bar" id="bar"></div></div></div>
+<main class="wrap">
+<h1>Failed tasks</h1>
+<div class="mut" id="summary"></div>
+<div class="card" id="flist"></div>
+<div class="mut">Double-click (double-tap) any task on the dashboard or a category page to mark it failed. Use ↩ to restore it.</div>
+<div class="foot mut" id="status"></div>
+</main>
+<script src="config.js"></script>
+<script src="core.js"></script>
+<script>
+const $=id=>document.getElementById(id);
+function render(){
+ $('bar').innerHTML=G.catBar('fail');$('status').textContent=G.status;
+ const f=G.failed();$('summary').textContent=f.length+' failed task'+(f.length===1?'':'s');
+ $('flist').innerHTML=f.map(G.failRow).join('')||'<div class="mut">No failures. Keep it up ✓</div>';
+}
+G.onChange(render);
+G.init().then(render);
+</script></body></html>

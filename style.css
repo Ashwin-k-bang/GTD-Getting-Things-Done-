@@ -48,9 +48,16 @@ body.dash main{padding-top:6px}
 /* Compact dashboard rows: category-coloured background, due details at the right */
 .crow{display:flex;align-items:center;gap:8px;padding:5px 8px;border-radius:8px;margin:4px 0;color:#fff}
 .crow input[type=checkbox]{width:20px;height:20px;flex:none;margin:0}
-.crow .cn{flex:1;min-width:0;color:#fff;font-weight:500;text-decoration:none;overflow-wrap:anywhere;text-shadow:0 1px 2px rgba(0,0,0,.45)}
+.crow .cw{flex:1;min-width:0}.crow>.cn{flex:1;min-width:0}.crow .cn{color:#fff;font-weight:500;text-decoration:none;overflow-wrap:anywhere;text-shadow:0 1px 2px rgba(0,0,0,.45)}
 .crow .cd{flex:none;font-size:12px;text-align:right;white-space:nowrap;background:rgba(0,0,0,.25);border-radius:6px;padding:2px 6px}
 .crow .cd.late{background:#fff;color:var(--red);font-weight:600}
 .tabsel{display:flex;gap:6px;align-items:center;margin:8px 0}
 .tabsel select{flex:1;min-width:0;padding:8px}
 .tabsel .pill{min-height:38px;padding:4px 10px}
+.crow,.task{-webkit-user-select:none;user-select:none;touch-action:manipulation}
+#bar .pill.fail{background:#5b5b57;border-color:#5b5b57;color:#fff}
+#bar .pill.fail.on{box-shadow:inset 0 0 0 2px #fff,0 0 0 2px var(--tx)}
+#bar .pill.fail .badge{background:rgba(255,255,255,.3);color:#fff}
+.crow button.s.w{color:#fff;min-width:30px;min-height:30px;padding:2px 6px}
+.crow .cnote{font-size:12px;opacity:.85;overflow-wrap:anywhere}
+.crow.done{opacity:.65}.crow.done .cn{text-decoration:line-through}

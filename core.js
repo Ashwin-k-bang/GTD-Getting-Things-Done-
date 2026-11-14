@@ -29,10 +29,11 @@ G.get=(k,id)=>S[k].find(r=>r.id===id&&!r.deleted);
 G.put=(k,o)=>{if(!o.id)o.id=G.uid();if(!o.created)o.created=Date.now();o.updated=Date.now();const i=S[k].findIndex(r=>r.id===o.id);if(i<0)S[k].push(o);else S[k][i]=o;persist();emit();queue();return o};
 G.del=(k,id)=>{const r=S[k].find(x=>x.id===id);if(!r)return;r.deleted=true;r.updated=Date.now();persist();emit();queue()};
 G.delCategory=id=>{const t=Date.now();S.cats.concat(S.tasks.filter(x=>x.cat===id),S.rems.filter(x=>x.cat===id)).forEach(r=>{if(r.id===id||r.cat===id){r.deleted=true;r.updated=t}});persist();emit();queue()};
-G.open=()=>G.list('tasks').filter(t=>!t.done);
+G.open=()=>G.list('tasks').filter(t=>!t.done&&!t.failed);
+G.failed=()=>G.list('tasks').filter(t=>t.failed&&!t.done).sort((a,b)=>(b.failedAt||0)-(a.failedAt||0));
 G.byDue=(a,b)=>{const x=a.dl||'9999',y=b.dl||'9999';if(x!==y)return x<y?-1:1;const c=G.get('cats',a.cat),d=G.get('cats',b.cat);return((c&&c.name)||'').localeCompare((d&&d.name)||'')};
 /* ---------- tab rules ---------- */
-G.match=(t,b)=>{if(t.done||t.deleted)return false;if(b.rule==='none')return!t.dl;if(!t.dl)return false;const d=G.diff(t.dl);
+G.match=(t,b)=>{if(t.done||t.failed||t.deleted)return false;if(b.rule==='none')return!t.dl;if(!t.dl)return false;const d=G.diff(t.dl);
  if(b.rule==='overdue')return d<0;if(d<0)return false;
  switch(b.rule){case'exact':return d===b.a;case'within':return d<=b.a;case'between':return d>=b.a&&d<=b.b;
  case'month':return t.dl.slice(0,7)===G.today().slice(0,7);
@@ -72,23 +73,29 @@ const applySetup=()=>{const m=/[#&]setup=([^&]+)/.exec(location.hash);if(!m)retu
 G.catBar=active=>{const o=G.open();return'<a class="pill'+(active==='dash'?' on':'')+'" href="index.html">⌂ Dashboard</a>'+
  G.list('cats').sort((a,b)=>a.created-b.created).map(c=>{const n=o.filter(t=>t.cat===c.id),od=n.filter(t=>t.dl&&G.diff(t.dl)<0).length;
  return'<a class="pill cat'+(active===c.id?' on':'')+'" style="background:'+c.color+';border-color:'+c.color+'" href="category.html?c='+c.id+'">'+G.esc(c.name)+'<span class="badge">'+n.length+'</span>'+(od?'<span class="red" title="Overdue"> ●</span>':'')+'</a>'}).join('')+
- '<button class="pill" data-newcat>+ New category</button>'};
+ '<a class="pill fail'+(active==='fail'?' on':'')+'" href="failures.html">✕ Failed<span class="badge">'+G.failed().length+'</span></a><button class="pill" data-newcat>+ New category</button>'};
 G.taskRow=(t,o)=>{o=o||{};const c=G.get('cats',t.cat)||{name:'?',color:'#999'},late=t.dl&&!t.done&&G.diff(t.dl)<0;
- return'<div class="task'+(t.done?' done':'')+'"><input type="checkbox" data-done="'+t.id+'"'+(t.done?' checked':'')+' aria-label="Done"><div class="b">'+
+ return'<div class="task'+(t.done?' done':'')+'" data-tid="'+t.id+'"><input type="checkbox" data-done="'+t.id+'"'+(t.done?' checked':'')+' aria-label="Done"><div class="b">'+
  (o.cat?'<a class="nm" href="category.html?c='+t.cat+'">'+G.esc(t.name)+'</a>':'<span class="nm">'+G.esc(t.name)+'</span>')+
  '<div class="mut">'+(o.cat?'<span class="dot" style="background:'+c.color+'"></span>'+G.esc(c.name)+' · ':'')+'<span class="'+(late?'red':'')+'">'+G.esc(G.dueLabel(t.dl))+'</span>'+(t.min?' · '+G.fmt(t.min):'')+'</div>'+
  (t.notes?'<div class="mut">'+G.esc(t.notes)+'</div>':'')+'</div>'+
  (o.actions?'<button class="s" data-edit="'+t.id+'" aria-label="Edit">✎</button><button class="s" data-del="'+t.id+'" aria-label="Delete">✕</button>':'')+'</div>'};
 G.dueShort=d=>{if(!d)return'No deadline';const n=G.diff(d);if(n===0)return'Today';if(n===1)return'Tomorrow';
  const ds=new Date(d+'T00:00').toLocaleDateString([],{day:'numeric',month:'short'});return n>1?ds+' · '+n+'d':ds+' · '+(-n)+'d late'};
-G.compactRow=t=>{const c=G.get('cats',t.cat)||{name:'?',color:'#999'},late=t.dl&&G.diff(t.dl)<0;
- return'<div class="crow" style="background:'+c.color+'" title="'+G.esc(c.name)+'"><input type="checkbox" data-done="'+t.id+'" aria-label="Done"><a class="cn" href="category.html?c='+t.cat+'">'+G.esc(t.name)+'</a>'+
- '<span class="cd'+(late?' late':'')+'">'+G.esc(G.dueShort(t.dl))+(t.min?' · '+G.fmt(t.min):'')+'</span></div>'};
+G.compactRow=(t,o)=>{o=o&&o.actions?o:{};const c=G.get('cats',t.cat)||{name:'?',color:'#999'},late=t.dl&&!t.done&&G.diff(t.dl)<0;
+ return'<div class="crow'+(t.done?' done':'')+'" data-tid="'+t.id+'" style="background:'+c.color+'" title="'+G.esc(c.name)+'"><input type="checkbox" data-done="'+t.id+'"'+(t.done?' checked':'')+' aria-label="Done"><div class="cw"><span class="cn">'+G.esc(t.name)+'</span>'+(t.notes?'<div class="cnote">'+G.esc(t.notes)+'</div>':'')+'</div>'+
+ '<span class="cd'+(late?' late':'')+'">'+G.esc(G.dueShort(t.dl))+(t.min?' · '+G.fmt(t.min):'')+'</span>'+
+ (o.actions?'<button class="s w" data-edit="'+t.id+'" aria-label="Edit">✎</button><button class="s w" data-del="'+t.id+'" aria-label="Delete">✕</button>':'')+'</div>'};
+G.failRow=t=>{const c=G.get('cats',t.cat)||{name:'?',color:'#999'};
+ const fd=t.failedAt?new Date(t.failedAt).toLocaleDateString([],{day:'numeric',month:'short'}):'';
+ return'<div class="crow" style="background:'+c.color+'"><span class="cn">'+G.esc(t.name)+'</span><span class="cd">'+G.esc(c.name)+(t.dl?' · due '+G.esc(G.dueShort(t.dl).split(' · ')[0]):'')+(fd?' · failed '+fd:'')+'</span><button class="s w" data-restore="'+t.id+'" title="Restore" aria-label="Restore">↩</button><button class="s w" data-fdel="'+t.id+'" title="Delete" aria-label="Delete">✕</button></div>'};
 G.newCategory=()=>{let n=prompt('New category name');if(n==null)return;n=n.trim();if(!n)return;
  if(G.list('cats').some(c=>c.name.toLowerCase()===n.toLowerCase())){alert('A category with that name already exists.');return}
  const c=G.put('cats',{name:n,color:COLS[G.list('cats').length%COLS.length]});location.href='category.html?c='+c.id};
 G.init=async()=>{await openDB();await load();seed();applySetup();
  document.addEventListener('click',e=>{if(e.target.closest('[data-newcat]'))G.newCategory()});
+ document.addEventListener('dblclick',e=>{if(e.target.closest('input,button,select,a'))return;const r=e.target.closest('[data-tid]');if(!r||r.classList.contains('done'))return;const t=G.get('tasks',r.dataset.tid);if(!t||t.done||t.failed)return;getSelection&&getSelection().removeAllRanges();G.put('tasks',Object.assign({},t,{failed:true,failedAt:Date.now()}))});
+ document.addEventListener('click',e=>{const d=e.target.dataset||{};if(d.restore){const t=G.get('tasks',d.restore);if(t)G.put('tasks',Object.assign({},t,{failed:false,failedAt:0}))}else if(d.fdel){if(confirm('Delete this failed task permanently?'))G.del('tasks',d.fdel)}});
  document.addEventListener('change',e=>{const id=e.target.dataset&&e.target.dataset.done;if(!id)return;const t=G.get('tasks',id);if(t)G.put('tasks',Object.assign({},t,{done:e.target.checked,doneAt:e.target.checked?Date.now():0}))});
  let day=G.today();setInterval(()=>{if(G.today()!==day){day=G.today();emit()}},30000);
  document.addEventListener('visibilitychange',()=>{if(!document.hidden){if(G.today()!==day){day=G.today();emit()}G.sync(1)}});

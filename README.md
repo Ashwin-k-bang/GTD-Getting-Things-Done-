@@ -7,6 +7,7 @@ A personal task and reference manager based on *Getting Things Done*. Plain HTML
 |---|---|
 | `index.html` | Dashboard: category bar, Overdue strip, deadline tabs, custom tab builder, settings |
 | `category.html` | Category page (`?c=<id>`): Tasks and Remember |
+| `failures.html` | Failed tasks list (double-click a task to mark it failed; ↩ restores) |
 | `core.js` | Storage (IndexedDB), GitHub sync, date helpers, tab-rule logic, shared UI |
 | `style.css` | Mobile-first styles, light/dark following the device |
 | `sw.js`, `manifest.webmanifest`, `icon-*.png` | Offline use and install-to-home-screen |
