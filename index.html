@@ -3,10 +3,11 @@
 <main class="wrap">
 <div id="syncbanner"></div>
 <div id="overdue"></div>
-<div class="bar" id="tabs"></div>
+<div class="tabsel" id="tabs"></div>
 <div id="manage"></div>
 <div id="list"></div>
 <div id="upcoming"></div>
+<div id="nodl"></div>
 <div id="hint"></div>
 <div class="foot mut" id="status"></div>
 </main>
@@ -45,15 +46,17 @@ function render(){
  const T=tabs();if(!T.find(t=>t.id===cur))cur=T[0]?T[0].id:null;
  const open=G.open(),od=open.filter(t=>t.dl&&G.diff(t.dl)<0).sort(G.byDue);
  const sc=G.cfg();$('syncbanner').innerHTML=(sc.token&&sc.repo)?'':'<div class="card"><h3>Sync is off</h3><div class="mut">Your tasks are only on this device. Connect once to see the same data on every device.</div><div class="row"><button class="btn" data-act="settings">Set up sync</button></div></div>';
- $('overdue').innerHTML=od.length?'<div class="card od"><h3 class="red">Overdue · '+od.length+' task'+(od.length>1?'s':'')+'</h3>'+od.map(t=>G.taskRow(t,{cat:1})).join('')+'</div>':'';
- $('tabs').innerHTML='<button class="pill" data-act="settings" aria-label="Settings">⚙</button>'+T.map(b=>'<button class="pill'+(b.id===cur?' on':'')+'" data-act="tab" data-id="'+b.id+'">'+G.esc(b.name)+'<span class="badge">'+open.filter(t=>G.match(t,b)).length+'</span></button>').join('')+
-  '<button class="pill" data-act="newtab" aria-label="Add tab">+</button><button class="pill" data-act="manage">'+(manage?'Done':'Edit tabs')+'</button>';
+ $('overdue').innerHTML=od.length?'<div class="card od"><h3 class="red">Overdue · '+od.length+' task'+(od.length>1?'s':'')+'</h3>'+od.map(G.compactRow).join('')+'</div>':'';
+ $('tabs').innerHTML='<button class="pill" data-act="settings" aria-label="Settings">⚙</button><select id="tabsel" aria-label="Due view">'+T.map(b=>'<option value="'+b.id+'"'+(b.id===cur?' selected':'')+'>'+G.esc(b.name)+' ('+open.filter(t=>G.match(t,b)).length+')</option>').join('')+'</select>'+
+  '<button class="pill" data-act="newtab" aria-label="Add view">+</button><button class="pill" data-act="manage">'+(manage?'Done':'Edit')+'</button>';
  $('manage').innerHTML=manage?'<div class="card">'+T.map(b=>'<div class="hd"><span>'+G.esc(b.name)+'</span><span><button class="s" data-act="tl" data-id="'+b.id+'">‹</button><button class="s" data-act="tr" data-id="'+b.id+'">›</button><button class="s" data-act="etab" data-id="'+b.id+'">✎</button><button class="s" data-act="dtab" data-id="'+b.id+'">✕</button></span></div>').join('')+'</div>':'';
  const b=T.find(x=>x.id===cur);
  if(b){const ts=open.filter(t=>G.match(t,b)).sort(G.byDue),tot=ts.reduce((a,t)=>a+(t.min||0),0);
-  $('list').innerHTML='<div class="card"><div class="mut" style="margin-bottom:4px">'+ts.length+' task'+(ts.length===1?'':'s')+(tot?' · '+G.fmt(tot):'')+'</div>'+(ts.map(t=>G.taskRow(t,{cat:1})).join('')||'<div class="mut">Nothing here ✓</div>')+'</div>'}else $('list').innerHTML='';
- const up=open.filter(t=>t.dl&&G.diff(t.dl)>=0).sort(G.byDue);
- $('upcoming').innerHTML='<div class="card"><h3>Upcoming · '+up.length+' task'+(up.length===1?'':'s')+'</h3>'+(up.map(t=>G.taskRow(t,{cat:1})).join('')||'<div class="mut">No upcoming deadlines ✓</div>')+'</div>';
+  $('list').innerHTML='<div class="card"><div class="mut" style="margin-bottom:4px">'+ts.length+' task'+(ts.length===1?'':'s')+(tot?' · '+G.fmt(tot):'')+'</div>'+(ts.map(G.compactRow).join('')||'<div class="mut">Nothing here ✓</div>')+'</div>'}else $('list').innerHTML='';
+ const up=open.filter(t=>t.dl&&G.diff(t.dl)>0).sort(G.byDue);
+ $('upcoming').innerHTML='<div class="card"><h3>Upcoming · '+up.length+' task'+(up.length===1?'':'s')+'</h3>'+(up.map(G.compactRow).join('')||'<div class="mut">No upcoming deadlines ✓</div>')+'</div>';
+ const nd=open.filter(t=>!t.dl).sort(G.byDue);
+ $('nodl').innerHTML='<div class="card"><h3>No deadline · '+nd.length+' task'+(nd.length===1?'':'s')+'</h3>'+(nd.map(G.compactRow).join('')||'<div class="mut">Nothing without a deadline ✓</div>')+'</div>';
  $('hint').innerHTML=G.list('cats').length?'':'<div class="card mut">Create your first category with “+ New category” above to get started.</div>';
  $('status').textContent=G.status;$('sstat').textContent=G.status;
 }
@@ -61,6 +64,7 @@ function move(id,d){const T=tabs(),i=T.findIndex(t=>t.id===id),j=i+d;if(j<0||j>=
 function ruleUI(){const r=$('tr').value;$('la').style.display=(r==='exact'||r==='within'||r==='between')?'':'none';$('lb').style.display=r==='between'?'':'none';$('la').firstChild.textContent=r==='between'?'From day X':'N days'}
 function openTab(id){editing=id||null;const b=id?G.get('tabs',id):{name:'',rule:'exact',a:'',b:''};$('tdt').textContent=id?'Edit tab':'New tab';$('tn').value=b.name;$('tr').value=b.rule;$('ta').value=b.a;$('tb').value=b.b;ruleUI();$('tabdlg').showModal()}
 $('tr').onchange=ruleUI;
+document.addEventListener('change',e=>{if(e.target.id==='tabsel'){cur=e.target.value;render()}});
 $('tcancel').onclick=()=>$('tabdlg').close();
 $('tsave').onclick=()=>{const n=$('tn').value.trim();if(!n){$('tn').focus();return}
  const base=editing?Object.assign({},G.get('tabs',editing)):{order:tabs().length};
