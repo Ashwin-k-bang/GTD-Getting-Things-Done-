@@ -270,27 +270,27 @@
   },
   {
    "cat": "mw81fgetwo761",
-   "done": false,
-   "doneAt": 0,
+   "done": true,
+   "doneAt": 1794624092231,
    "name": "Wash fase and moisturize",
    "dl": "2026-11-11",
    "min": 0,
    "notes": "",
    "id": "mwc439ikr0m7y",
    "created": 1794401109740,
-   "updated": 1794401118458
+   "updated": 1794624092231
   },
   {
    "cat": "mw81fgetwo761",
-   "done": false,
-   "doneAt": 0,
+   "done": true,
+   "doneAt": 1794624090743,
    "name": "GTD app setup",
    "dl": "2026-11-11",
    "min": 0,
    "notes": "",
    "id": "mwc43wcazgiwx",
    "created": 1794401139323,
-   "updated": 1794401139323
+   "updated": 1794624090743
   },
   {
    "cat": "mw81f5nc38hxf",
@@ -306,27 +306,27 @@
   },
   {
    "cat": "mw81fgetwo761",
-   "done": false,
-   "doneAt": 0,
+   "done": true,
+   "doneAt": 1794624093051,
    "name": "Meditation",
    "dl": "2026-11-11",
    "min": 0,
    "notes": "",
    "id": "mwc4ewz2zhrle",
    "created": 1794401653358,
-   "updated": 1794401653358
+   "updated": 1794624093051
   },
   {
    "cat": "mw81fgetwo761",
-   "done": false,
-   "doneAt": 0,
+   "done": true,
+   "doneAt": 1794624094546,
    "name": "Pullups",
    "dl": "2026-11-11",
    "min": 0,
    "notes": "",
    "id": "mwc4f3zziw5xc",
    "created": 1794401662463,
-   "updated": 1794401662463
+   "updated": 1794624094546
   }
  ],
  "rems": [
