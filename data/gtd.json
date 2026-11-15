@@ -409,15 +409,15 @@
   },
   {
    "cat": "mw81f5nc38hxf",
-   "done": false,
-   "doneAt": 0,
+   "done": true,
+   "doneAt": 1794758811460,
    "name": "Complete Unit 5 of BAI",
    "dl": "2026-11-14",
    "min": 0,
    "notes": "",
    "id": "mwft0p3rahldx",
    "created": 1794624378903,
-   "updated": 1794624378903
+   "updated": 1794758811460
   },
   {
    "cat": "mwfu759ip44xi",
@@ -519,15 +519,15 @@
   },
   {
    "cat": "mw81fgetwo761",
-   "done": false,
-   "doneAt": 0,
+   "done": true,
+   "doneAt": 1794758813965,
    "name": "Get insurance premium document from dikki to file",
    "dl": "2026-11-14",
    "min": 0,
    "notes": "",
    "id": "mwg57lq9g5b9q",
    "created": 1794644856513,
-   "updated": 1794644864791
+   "updated": 1794758813965
   },
   {
    "cat": "mw81f5nc38hxf",
