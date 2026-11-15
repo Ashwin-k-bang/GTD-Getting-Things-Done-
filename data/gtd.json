@@ -617,15 +617,15 @@
   },
   {
    "cat": "mw81fgetwo761",
-   "done": false,
-   "doneAt": 0,
+   "done": true,
+   "doneAt": 1794758773287,
    "name": "Buy coffee",
    "dl": "2026-11-15",
    "min": 0,
    "notes": "",
    "id": "mwhqtp1h6fzi3",
    "created": 1794741625349,
-   "updated": 1794741633235
+   "updated": 1794758773287
   },
   {
    "cat": "mw81fgetwo761",
