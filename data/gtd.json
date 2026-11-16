@@ -602,7 +602,9 @@
    "notes": "",
    "id": "mwhe3t2rivudc",
    "created": 1794720262131,
-   "updated": 1794720262131
+   "updated": 1794805468829,
+   "failed": true,
+   "failedAt": 1794805468829
   },
   {
    "cat": "mw81f5nc38hxf",
