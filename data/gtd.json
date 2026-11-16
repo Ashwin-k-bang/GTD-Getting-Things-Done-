@@ -702,15 +702,15 @@
   },
   {
    "cat": "mwissw5pxmwcf",
-   "done": false,
-   "doneAt": 0,
+   "done": true,
+   "doneAt": 1794820567891,
    "name": "Get her at 1pm",
    "dl": "2026-11-16",
    "min": 0,
    "notes": "",
    "id": "mwist6koi1v7e",
    "created": 1794805426824,
-   "updated": 1794805426824
+   "updated": 1794820567891
   },
   {
    "cat": "mw81fgetwo761",
