@@ -478,9 +478,10 @@
    "notes": "",
    "id": "mwfyh0ajsm980",
    "created": 1794633537979,
-   "updated": 1794662852376,
+   "updated": 1794813185812,
    "failed": true,
-   "failedAt": 1794662852376
+   "failedAt": 1794662852376,
+   "deleted": true
   },
   {
    "cat": "mw81fcld7eabi",
@@ -616,9 +617,10 @@
    "notes": "",
    "id": "mwhe3t2rivudc",
    "created": 1794720262131,
-   "updated": 1794805468829,
+   "updated": 1794813183883,
    "failed": true,
-   "failedAt": 1794805468829
+   "failedAt": 1794805468829,
+   "deleted": true
   },
   {
    "cat": "mw81f5nc38hxf",
@@ -680,9 +682,10 @@
    "notes": "",
    "id": "mwi24xdzc1s40",
    "created": 1794760625159,
-   "updated": 1794805478522,
+   "updated": 1794813182651,
    "failed": true,
-   "failedAt": 1794805478522
+   "failedAt": 1794805478522,
+   "deleted": true
   },
   {
    "cat": "mw81fcld7eabi",
