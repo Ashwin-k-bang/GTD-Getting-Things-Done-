@@ -664,7 +664,9 @@
    "notes": "",
    "id": "mwi24xdzc1s40",
    "created": 1794760625159,
-   "updated": 1794760625159
+   "updated": 1794805478522,
+   "failed": true,
+   "failedAt": 1794805478522
   },
   {
    "cat": "mw81fcld7eabi",
