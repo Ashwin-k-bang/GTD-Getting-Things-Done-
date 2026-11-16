@@ -714,15 +714,15 @@
   },
   {
    "cat": "mw81fgetwo761",
-   "done": false,
-   "doneAt": 0,
+   "done": true,
+   "doneAt": 1794820583286,
    "name": "Get jacket today under 2000",
    "dl": "2026-11-16",
    "min": 0,
    "notes": "",
    "id": "mwisti6p034ee",
    "created": 1794805441873,
-   "updated": 1794805441873
+   "updated": 1794820583286
   },
   {
    "cat": "mwfu759ip44xi",
