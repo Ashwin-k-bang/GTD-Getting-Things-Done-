@@ -560,15 +560,15 @@
   },
   {
    "cat": "mw81f5nc38hxf",
-   "done": false,
-   "doneAt": 0,
+   "done": true,
+   "doneAt": 1794886139353,
    "name": "Backpropogation unit3/4 numerical ?",
    "dl": "2026-11-17",
    "min": 0,
    "notes": "",
    "id": "mwgazf516dd90",
    "created": 1794654552421,
-   "updated": 1794654552421
+   "updated": 1794886139353
   },
   {
    "cat": "mwfu759ip44xi",
