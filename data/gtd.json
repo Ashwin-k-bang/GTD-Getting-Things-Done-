@@ -749,6 +749,18 @@
    "id": "mwk4w7m9twkks",
    "created": 1794886189713,
    "updated": 1794886206128
+  },
+  {
+   "cat": "mw81f8gj6hoct",
+   "done": false,
+   "doneAt": 0,
+   "name": "CI",
+   "dl": "2026-11-17",
+   "min": 30,
+   "notes": "",
+   "id": "mwk4y3nk5ohli",
+   "created": 1794886277888,
+   "updated": 1794886277888
   }
  ],
  "rems": [
