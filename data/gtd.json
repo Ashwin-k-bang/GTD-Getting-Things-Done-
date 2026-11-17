@@ -604,11 +604,11 @@
    "doneAt": 0,
    "name": "wash chemda cloth",
    "dl": "2026-11-15",
-   "min": 0,
+   "min": 15,
    "notes": "",
    "id": "mwha0ggonir76",
    "created": 1794713387352,
-   "updated": 1794713387352
+   "updated": 1794886226512
   },
   {
    "cat": "mw81fgetwo761",
