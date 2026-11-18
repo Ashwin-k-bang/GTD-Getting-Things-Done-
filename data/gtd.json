@@ -236,9 +236,10 @@
    "notes": "",
    "id": "mw9ddneqr3gob",
    "created": 1794235312322,
-   "updated": 1794886154430,
+   "updated": 1794975155106,
    "failed": true,
-   "failedAt": 1794886154430
+   "failedAt": 1794886154430,
+   "deleted": true
   },
   {
    "cat": "mw81fgetwo761",
