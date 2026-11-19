@@ -778,15 +778,15 @@
   },
   {
    "cat": "mw81f5nc38hxf",
-   "done": false,
-   "doneAt": 0,
+   "done": true,
+   "doneAt": 1795057960225,
    "name": "Finish DAA by 3PM",
    "dl": "2026-11-17",
    "min": 0,
    "notes": "",
    "id": "mwk5cmv5za1jy",
    "created": 1794886955969,
-   "updated": 1794886955969
+   "updated": 1795057960225
   },
   {
    "cat": "mw81f5nc38hxf",
