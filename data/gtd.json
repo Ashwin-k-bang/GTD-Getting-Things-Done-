@@ -804,15 +804,15 @@
   },
   {
    "cat": "mw81fgetwo761",
-   "done": false,
-   "doneAt": 0,
+   "done": true,
+   "doneAt": 1795319803553,
    "name": "Get black bracelet band",
    "dl": "2026-11-18",
    "min": 0,
    "notes": "",
    "id": "mwlluqiwsnrne",
    "created": 1794975140552,
-   "updated": 1794975140552
+   "updated": 1795319803553
   },
   {
    "cat": "mw81fgetwo761",
