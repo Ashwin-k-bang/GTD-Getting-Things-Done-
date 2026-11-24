@@ -824,15 +824,15 @@
   },
   {
    "cat": "mw81fgetwo761",
-   "done": false,
-   "doneAt": 0,
+   "done": true,
+   "doneAt": 1795498645581,
    "name": "Add feature to see tasks done successfull for each category",
    "dl": "2026-12-01",
    "min": 0,
    "notes": "",
    "id": "mwrb1o8j7g9k6",
    "created": 1795319785459,
-   "updated": 1795319797693
+   "updated": 1795498645581
   },
   {
    "cat": "mw81fgetwo761",
